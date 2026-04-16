@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For You 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  text-align: center;
+  background: linear-gradient(to right, #ffdde1, #ee9ca7);
+  color: white;
+}
+
+.screen { display: none; padding: 30px; }
+
+button {
+  padding: 12px 25px;
+  margin: 10px;
+  border-radius: 25px;
+  border: none;
+  background: #ff4d6d;
+  color: white;
+  font-size: 16px;
+}
+
+.card {
+  display: inline-block;
+  padding: 20px;
+  margin: 15px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+img {
+  width: 200px;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+.bigcake {
+  width: 90%;
+  max-width: 500px;
+}
+
+/* POEM MAGIC */
+#poemBox {
+  background: rgba(255,255,255,0.2);
+  padding: 25px;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.line {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards;
+}
+
+.line:nth-child(1) { animation-delay: 0.5s; }
+.line:nth-child(2) { animation-delay: 1s; }
+.line:nth-child(3) { animation-delay: 1.5s; }
+.line:nth-child(4) { animation-delay: 2s; }
+.line:nth-child(5) { animation-delay: 2.5s; }
+.line:nth-child(6) { animation-delay: 3s; }
+.line:nth-child(7) { animation-delay: 3.5s; }
+.line:nth-child(8) { animation-delay: 4s; }
+.line:nth-child(9) { animation-delay: 4.5s; }
+.line:nth-child(10) { animation-delay: 5s; }
+.line:nth-child(11) { animation-delay: 5.5s; }
+.line:nth-child(12) { animation-delay: 6s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="song.mpeg">
+</audio>
+
+<!-- PASSWORD -->
+<div id="screen1" class="screen" style="display:block;">
+  <h2>🔐 Enter Password 💕</h2>
+  <img src="cute.jpg">
+  <br><br>
+  <input type="password" id="pass">
+  <br>
+  <button onclick="checkPass()">Enter 💖</button>
+  <p id="error"></p>
+</div>
+
+<!-- READY -->
+<div id="ready" class="screen">
+  <h2>💖 Are you ready for the surprise? 💖</h2>
+  <img src="cute.jpg">
+  <br><br>
+
+  <button onclick="showScreen('screen2')">Yes 😍</button>
+  <button onclick="showNo()">No 😤</button>
+
+  <p id="noText"></p>
+
+  <!-- GIF/VIDEO ONLY HERE -->
+  <video id="wrongVid" width="250" style="display:none;" loop muted>
+    <source src="wrong.mp4">
+  </video>
+</div>
+
+<!-- CAKE -->
+<div id="screen2" class="screen">
+  <h1>🎂 Happy Birthday 🎂</h1>
+  <img src="love.jpg">
+  <br>
+  <button onclick="showScreen('cake')">Blow Candle 🕯️</button>
+</div>
+
+<!-- BIG CAKE -->
+<div id="cake" class="screen">
+  <h1>🎉 Make a Wish 💫</h1>
+  <img class="bigcake" src="cake.jpg">
+  <br>
+  <button onclick="showScreen('screen3')">Continue 💖</button>
+</div>
+
+<!-- MESSAGE -->
+<div id="screen3" class="screen">
+  <h1>💖 Happy Birthday 💖</h1>
+  <p>You are special 💫</p>
+  <button onclick="showScreen('screen4')">Open Gifts 🎁</button>
+</div>
+
+<!-- GIFTS -->
+<div id="screen4" class="screen">
+  <h2>🎁 Choose Your Gift</h2>
+  <div class="card" onclick="showScreen('gift1')">📸 Photos</div>
+  <div class="card" onclick="showScreen('gift2')">💌 Poem</div>
+  <div class="card" onclick="showScreen('gift3')">💖 Klisha</div>
+</div>
+
+<!-- GIFT 1 -->
+<div id="gift1" class="screen">
+  <h2>📸 Memories</h2>
+  <img src="pic1.jpg">
+  <img src="pic2.jpg">
+  <img src="pic3.jpg">
+  <br>
+  <button onclick="showScreen('screen4')">⬅ Back</button>
+</div>
+
+<!-- GIFT 2 -->
+<div id="gift2" class="screen">
+  <h2>💌 For You 💖</h2>
+
+  <div id="poemBox">
+    <p class="line">🌸 Blossoming so beautifully, our bonds live 🌸</p>
+    <p class="line">✨ Mesmerising and cherishing the moments,</p>
+    <p class="line">our bond lives ✨</p>
+    <p class="line">💕 Making sad and bad decisions,</p>
+    <p class="line">along with lil cute arguments,</p>
+    <p class="line">our bond lives 💕</p>
+    <p class="line">😊 Coming back after silly ribbing,</p>
+    <p class="line">with effervescent guffaw,</p>
+    <p class="line">our bond lives 😊</p>
+    <p class="line">❤️ Yess, we that cute couple, my love ❤️</p>
+    <p class="line">💖 Harboring our relation every single min,</p>
+    <p class="line">to hone the luminescent link—</p>
+    <p class="line">our bond lives 💖</p>
+  </div>
+
+  <img src="cute.jpg" style="width:140px;">
+  <br>
+  <button onclick="showScreen('screen4')">⬅ Back</button>
+</div>
+
+<!-- GIFT 3 -->
+<div id="gift3" class="screen">
+  <h2>💖 Klisha 💖</h2>
+  <img src="you1.jpg">
+  <img src="you2.jpg">
+  <br>
+  <button onclick="showScreen('screen4')">⬅ Back</button>
+</div>
+
+<script>
+function showScreen(id) {
+  let screens = document.getElementsByClassName("screen");
+  for (let i = 0; i < screens.length; i++) {
+    screens[i].style.display = "none";
+  }
+  document.getElementById(id).style.display = "block";
+}
+
+function checkPass() {
+  let p = document.getElementById('pass').value;
+
+  if (p === "Kikuisthebest") {
+    document.getElementById("music").play();
+    showScreen('ready');
+  } else {
+    document.getElementById("error").innerText = "Wrong password 😜";
+  }
+}
+
+function showNo() {
+  document.getElementById("noText").innerText = "How dare you 😤💔";
+
+  let vid = document.getElementById("wrongVid");
+  vid.style.display = "block";
+  vid.currentTime = 0;
+  vid.play();
+}
+</script>
+
+</body>
+</html>
